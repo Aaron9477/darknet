@@ -24,6 +24,7 @@ darknet
 backup/
 pretrain_network/
 weights/
+turtlebot/
 *.a
 
 # OS Generated #
