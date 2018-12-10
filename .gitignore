@@ -26,6 +26,7 @@ pretrain_network/
 weights/
 turtlebot/
 *.a
+output.txt
 
 # OS Generated #
 .DS_Store*
