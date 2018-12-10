@@ -1,0 +1,6 @@
+classes= 2
+train  = /home/zq610/WYZ/deeplearning/network/darknet/train_test_list/turtlebot/train.txt
+valid  = /home/zq610/WYZ/deeplearning/network/darknet/train_test_list/turtlebot/test.txt
+names = /home/zq610/WYZ/deeplearning/network/darknet/cfg_wyz/turtlebot/turtlebot.names
+backup = backup
+

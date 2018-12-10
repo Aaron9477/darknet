@@ -19,6 +19,13 @@ cfg/
 darknet
 .fuse*
 
+# add by wyz
+*.so
+backup/
+pretrain_network/
+weights/
+*.a
+
 # OS Generated #
 .DS_Store*
 ehthumbs.db
