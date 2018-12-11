@@ -5,9 +5,11 @@
 
 
 # 训练网络origin
-./darknet detector train cfg_wyz/turtlebot/turtlebot.data cfg_wyz/turtlebot/yolov3-tiny.cfg pretrain_network/yolov3-tiny.conv.15 -map \
- | tee output.txt
+#./darknet detector train cfg_wyz/turtlebot/turtlebot.data cfg_wyz/turtlebot/yolov3-tiny.cfg pretrain_network/yolov3-tiny.conv.15 -map \
+# | tee output.txt
 # 使用训练后的网络
 # 
 # ./darknet detector train cfg_wyz/turtlebot/turtlebot.data cfg_wyz/turtlebot/yolov3-tiny.cfg pretrain_network/yolov3-tiny.conv.15 -map \
 # | tee output.txt
+
+./darknet detector recall cfg_wyz/turtlebot/turtlebot.data cfg_wyz/turtlebot/yolov3-tiny.cfg backup/yolov3-tiny_final.weights
