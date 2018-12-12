@@ -496,7 +496,7 @@ void validate_detector_recall(char *cfgfile, char *weightfile)
     fprintf(stderr, "Learning Rate: %g, Momentum: %g, Decay: %g\n", net->learning_rate, net->momentum, net->decay);
     srand(time(0));
 
-    list *plist = get_paths("data/coco_val_5k.list");
+    list *plist = get_paths("/home/zq610/WYZ/deeplearning/network/darknet/train_test_list/turtlebot/valid.txt");
     char **paths = (char **)list_to_array(plist);
 
     layer l = net->layers[net->n-1];
@@ -584,6 +584,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             fflush(stdout);
             input = fgets(input, 256, stdin);
             if(!input) return;
+            // 分解字符串,把\n去掉
             strtok(input, "\n");
         }
         image im = load_image_color(input,0,0);
@@ -616,10 +617,22 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             show_image(im, "predictions", 0);
 #endif
         }
-
+        printf("finished!!");
         free_image(im);
         free_image(sized);
         if (filename) break;
+        // else{
+        //     while(1){
+        //         printf("stop(s) of continue(c), input s or c: ");
+        //         fflush(stdout);
+        //         input = fgets(input, 256, stdin);
+        //         // 分解字符串,把\n去掉
+        //         strtok(input, "\n");
+        //         if(input[0] == 's') return;
+        //         else if (input[0] == 'c') break;
+        //         else printf("wrong input!");
+        //     }
+        // }
     }
 }
 
@@ -837,7 +850,27 @@ void run_detector(int argc, char **argv)
     char *weights = (argc > 5) ? argv[5] : 0;
     char *filename = (argc > 6) ? argv[6]: 0;
     if(0==strcmp(argv[2], "test")) test_detector(datacfg, cfg, weights, filename, thresh, hier_thresh, outfile, fullscreen);
+
+    // written by wyz for test
+    // if(0==strcmp(argv[2], "test")) {
+    //     char buff[256];
+    //     char *input = buff;
+    //     while(1)
+    //     {
+    //         test_detector(datacfg, cfg, weights, filename, thresh, hier_thresh, outfile, fullscreen);
+    //         printf("stop(s) of continue(c), input s or c: ");
+    //         fflush(stdout);
+    //         input = fgets(input, 256, stdin);
+    //         // 分解字符串,把\n去掉
+    //         strtok(input, "\n");
+    //         if(input[0] == 's') break;
+    //         else if (input[0] == 'c') continue;
+    //         else printf("wrong input!");
+    //     }
+    // }
+
     else if(0==strcmp(argv[2], "train")) train_detector(datacfg, cfg, weights, gpus, ngpus, clear);
+    // valid是以valid中的文件为验证,将检测结果输入到result文件中
     else if(0==strcmp(argv[2], "valid")) validate_detector(datacfg, cfg, weights, outfile);
     else if(0==strcmp(argv[2], "valid2")) validate_detector_flip(datacfg, cfg, weights, outfile);
     else if(0==strcmp(argv[2], "recall")) validate_detector_recall(cfg, weights);
