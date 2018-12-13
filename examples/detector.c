@@ -64,7 +64,8 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
         if(l.random && count++%7 == 0){
             printf("Resizing\n");
             int dim = (rand() % 7 + 7) * 32;
-            if (get_current_batch(net)+200 > net->max_batches) dim = 416;
+            // 刚开始是随机输入大小进行训练的,最后200次进行随机大小训练
+            if (get_current_batch(net)+200 > net->max_batches) dim = 320;
             //int dim = (rand() % 4 + 16) * 32;
             printf("%d\n", dim);
             args.w = dim;

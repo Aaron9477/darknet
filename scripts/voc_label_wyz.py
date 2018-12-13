@@ -6,7 +6,7 @@ from os.path import join
 
 # sets=[('2012', 'train'), ('2012', 'val'), ('2007', 'train'), ('2007', 'val'), ('2007', 'test')]
 sets = ['train', 'val']
-dataset_dir = '/media/zq610/2C9BDE0469DC4DFC/ubuntu/dl_dataset/turtlebot/VOC_type/turtlebot_test2'
+dataset_dir = '/media/zq610/2C9BDE0469DC4DFC/ubuntu/dl_dataset/turtlebot/VOC_type/turtlebot'
 classes = ["t", "car"]
 dataset_name = 'turtlebot'
 
